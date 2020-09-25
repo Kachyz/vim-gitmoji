@@ -1616,7 +1616,15 @@ let s:emoji_code = {
     \ 'zzz': 0x1f4a4
 \ }
 
+let s:emoji_gitmoji = {
+  \ '+1': ['  masmas'],
+  \ '-1': ['  menosmenos']
+\ }
+
 function! emoji#data#dict()
   return s:emoji_code
 endfunction
 
+function emoji#data#gitmoji()
+  return s:emoji_gitmoji
+endfunction

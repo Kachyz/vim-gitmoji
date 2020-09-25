@@ -61,6 +61,22 @@ function! emoji#for(name, ...)
   endif
 endfunction
 
+function! emoji#description(name, ...)
+  let emoji = get(emoji#data#gitmoji(), tolower(a:name), '')
+  if empty(emoji)
+    return a:0 > 0 ? a:1 : emoji
+  endif
+
+  let echar = type(emoji) == 0 ? nr2char(emoji) :
+        \ join(map(copy(emoji), 'nr2char(v:val)'), '')
+  let pad = get(a:, 2, 1)
+  if pad
+    return echar . repeat(' ', 1 + pad - s:strwidth(echar))
+  else
+    return echar
+  endif
+endfunction
+
 let s:max_score = 1000
 function! s:score(haystack, needle)
   let idx = stridx(a:haystack, a:needle)
@@ -74,7 +90,7 @@ function! emoji#complete(findstart, base)
   if !exists('s:emojis')
     let s:emojis = map(sort(keys(emoji#data#dict())),
           \ emoji#available() ?
-          \ '{ "word": ":".v:val.":", "kind": emoji#for(v:val) }' :
+          \ '{ "word": ":".v:val.":", "kind": emoji#for(v:val).emoji#description(v:val) }' :
           \ '{ "word": ":".v:val.":" }')
   endif
 
