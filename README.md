@@ -34,7 +34,7 @@ Examples
 ```vim
 set completefunc=emoji#complete
 ```
-[screenshot](https://postimg.cc/vxGDzmBR)
+[![screenshot](https://i.postimg.cc/PJwZdpnq/image.png)](https://postimg.cc/vxGDzmBR)
 
 ### Replace `:emoji_name:` into Emojis
 
