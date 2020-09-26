@@ -1,12 +1,12 @@
-vim-emoji
+vim-gitmoji
 =========
 
-Emoji in Vim.
+[Gitmoji](https://gitmoji.carloscuesta.me/) guide in Vim.
 
 Extracted from
-[vim-github-dashboard](https://github.com/junegunn/vim-github-dashboard).
+[vim-emoji](https://github.com/junegunn/vim-emoji)
 
-![](https://raw.github.com/junegunn/i/master/emoji-sign.png)
+**The porpuse of this plugin is just list those emojis related to gitmoji and their description**
 
 Installation
 ------------
@@ -14,7 +14,7 @@ Installation
 Using [vim-plug](https://github.com/junegunn/vim-plug):
 
 ```vim
-Plug 'junegunn/vim-emoji'
+Plug 'Kachyz/vim-gitmoji'
 ```
 
 List of functions
@@ -22,28 +22,12 @@ List of functions
 
 - `emoji#for(name[, default = '', pad = 1])`
   - Refer to [Emoji cheat sheet](http://www.emoji-cheat-sheet.com)
+    - Except `camera_flash` emoji
 - `emoji#list()`
 - `emoji#complete(findstart, base)`
 
 Examples
 --------
-
-### Using Emojis as [Git Gutter](https://github.com/airblade/vim-gitgutter) symbols
-
-```vim
-let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-let g:gitgutter_sign_modified_removed = emoji#for('collision')
-```
-
-### Append Emoji list to current buffer
-
-```vim
-for e in emoji#list()
-  call append(line('$'), printf('%s (%s)', emoji#for(e), e))
-endfor
-```
 
 ### Emoji completion
 
@@ -51,7 +35,6 @@ endfor
 set completefunc=emoji#complete
 ```
 
-![](https://raw.github.com/junegunn/i/master/emoji-complete.gif)
 
 ### Replace `:emoji_name:` into Emojis
 
@@ -59,3 +42,9 @@ set completefunc=emoji#complete
 %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
 ```
 
+Notes
+-----
+```vim
+<C-X><C-U>
+```
+When in `Insert` mode that combination will display your helper
