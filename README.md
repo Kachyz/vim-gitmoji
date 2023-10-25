@@ -6,7 +6,7 @@ vim-gitmoji
 Extracted from
 [vim-emoji](https://github.com/junegunn/vim-emoji)
 
-**The porpuse of this plugin is just list those emojis related to gitmoji and their description**
+**The purpose of this plugin is just list those emojis related to gitmoji and their description**
 
 Installation
 ------------
